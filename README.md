@@ -157,6 +157,15 @@ O diagrama abaixo mostra as implementações das interfaces BeanFactory e Applic
 
 ![](../../Users/aesilva/AppData/Local/Temp/beanfactory-vs-applicationcontext.jpg)
 
+## Classes que iniciam uma aplicação
+
+Geralmente quando se olha para uma aplicação que inicializa o springboot, você vai ver as anotações
+
+@EnableAutoConfiguration
+@ComponentSccan
+@Configuration
+
+e as mesmas podem ser substituidas por @SpringBootApplication
 
 ##  @SpringBootApplication e @EnableAutoConfiguration no Spring Boot?
 
@@ -291,8 +300,42 @@ public class StudentEndPoint {
 Simplificando, a anotação é usada para mapear as solicitações da web para os métodos do Spring Controller.
 
 
+## @Autowired
+
+AutoWired faz parte do framework de injeção de dependencia do Spring. E será ele que fará a injeção de dependencias e 
+intanciar o objeto.
+
+Você pode utilizar essa anotação em:
+
+Propriedades;
+Construtores; e
+Métodos (mais comumente, os setters)
 
 
+
+## O que é injeção de dependências?
+
+Injeção de dependências (ou Dependency Injection – DI) é um tipo de inversão de controle (ou Inversion of Control – IoC) 
+que dá nome ao processo de prover instâncias de classes que um objeto precisa para funcionar.
+
+Podemos considerar como pontos de injeção qualquer maneira que possibilite entregar a dependência para um objeto.
+
+- O que torna uma classe elegível de ser injetada
+- 
+Para que uma instância do tipo ClienteRepositorio possa ser injetada em algum dos pontos de injeção é preciso que ela se torne um bean Spring.
+
+Fazemos isso anotando ela com a anotação @Component ou com qualquer uma de suas especializações:
+
+@Respository
+@Service
+@Controller
+
+## Entendendo as anotações
+
+@Component :essa anotação diz que a classe pode ser utilizada na injeção de dependencias
+@Respository: é uma especialização de Component. Ela deve ser utilizada quando tiver trabalhando com DAO, ele vai fazer com que as exceções
+que você não checou, possam ser traduzidas utilizando o Spring Data Acces Exception.
+@Service: é uma especialização de Component. Ela é para ser utilizada nas classes que trabalham na camada de Serviços.
 
 ## Referencias
 
